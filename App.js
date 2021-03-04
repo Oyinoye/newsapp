@@ -1,21 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+
+import SearchBar from './app/components/SearchBar';
+import Screen from './app/components/Screen';
+import BlockCard from './app/components/BlockCard';
+import FeaturedNews from './app/components/FeaturedNews';
+import SmallCard from './app/components/SmallCard';
+import BreakingNews from './app/components/BreakingNews';
+
+import data from './fakeData'
+import TechNews from './app/components/TechNews';
+import FlatCard from './app/components/Flatcard';
+import PoliticalNews from './app/components/PoliticalNews';
+import EntertainmentNews from './app/components/EntertainmentNews';
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const breakingNews = data.filter(item => item.category === 'breaking-news');
+  const techNews = data.filter(item => item.category === 'tech');
+  const politicalNews = data.filter(item => item.category === 'political');
+  const entertainmentNews = data.filter(item => item.category === 'entertainment')
+
+  return (
+      <Screen>
+        <SearchBar />
+        <FeaturedNews item={{
+        id: '8',
+        title: 'This is the eigth title.',
+        desc: 'This is the short form of description and this format is the actual same as our real database',
+        thumbnail: 'http://lorempixel.com/400/200/',
+        category: 'entertainment'
+    }}/>
+        <BreakingNews data={breakingNews} />
+        <PoliticalNews data={politicalNews} />
+        <TechNews data={techNews}/>
+        <EntertainmentNews data={entertainmentNews}/>
+      </Screen>
+    );
+  }
