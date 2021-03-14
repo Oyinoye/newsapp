@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import HorizontalList from './HorizontalList'
+import HorizontalList from './lists/HorizontalList'
 
 const TechNews = ({ data }) => {
     return (

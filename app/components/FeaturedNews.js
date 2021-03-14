@@ -1,10 +1,13 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native'
-import BlockCard from './BlockCard';
+import { StyleSheet, View } from 'react-native';
+import BlockCard from './cards/BlockCard';
 
-const FeaturedNews = ({item}) => {
+import {useNavigation} from '@react-navigation/native';
+
+const FeaturedNews = ({ item }) => {
+    const navigation = useNavigation();
     return (
-        <BlockCard item={item} style={{ marginVertical: 15 }} />
+        <BlockCard onPress={()=> navigation.navigate('NewsDetail', { item })} item={item} style={{ marginVertical: 15 }} />
     )
 }
 
